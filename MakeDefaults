@@ -1,0 +1,212 @@
+#
+#########################################################
+## DAFLAG=+DA2.0N for 32 bit                             ##
+## DAFLAG=+DA2.0W for 64 bit                             ##
+## DAFLAG= for K series hardware                         ##
+###########################################################
+DAFLAG=
+
+SDTUXROOT=$(TUXDIR)       #TUXDIR needed by tuxedo 
+SDORAROOT=$(ORACLE_HOME)  #ORACLE_HOME needed by oracle
+SDSOURCEBASE=$(MAKEROOT)
+
+##SDROGUEROOT=/u01/app/Ed10rogue_3_30/workspaces/HPUX11/ACC32310/12d_3_30
+SDROGUEROOT=$(ROGUEROOT)
+SDROGUEROOT_ORIG=/opt/aCC.03.30
+##
+SDWVROOT=$(SDSOURCEBASE)/wv
+SDBCROOT=$(SDSOURCEBASE)/bc
+SDSDROOT=$(SDSOURCEBASE)/sd
+SDTWROOT=$(SDSOURCEBASE)/tw
+SDTWWVROOT=$(SDSOURCEBASE)/twwv
+SDSVROOT=$(SDSOURCEBASE)/sv
+SDAIROOT=$(SDSOURCEBASE)/ai
+SDTIROOT=$(SDSOURCEBASE)/ti
+SDWFROOT=$(SDSOURCEBASE)/fw
+SDIQROOT=$(SDSOURCEBASE)/iq
+SDASROOT=$(SDSOURCEBASE)/as
+SDADROOT=$(SDSOURCEBASE)/ad
+SDTPROOT=$(SDSOURCEBASE)/tp
+
+###########################################################
+##### Following used in makefile this is why exported #####
+###########################################################
+
+##SDUTILDIR=/u01/bc/bin #where crtest exists
+SDUTILDIR=$(SDBCROOT)/bin #where crtest exists
+BCXOVER=..
+WVXOVER=..
+
+###########################################################
+##### Include Directories                             #####
+########################################################### 
+# 02/02/2017 William: added -I$(SDROGUEROOT)/include_std 
+INCFLAGS= -I$(SDROGUEROOT)/include_std  -I$(SDROGUEROOT)/include -I$(SDROGUEROOT) -I$(SDTUXROOT)/include  -I/usr/include -I$(SDTWROOT)/include -I$(SDBCROOT)/include -I$(SDWVROOT)/include -I$(SDIQROOT)/include -I$(SDWFROOT)/include -I$(SDSDROOT)/include -I$(SDAIROOT)/include -I$(SDSVROOT)/include -I$(SDTIROOT)/include -I$(SDASROOT)/include -I$(SDTWWVROOT)/include -I$(SDADROOT)/include -I$(SDTPROOT)/include -I$(SDSOURCEBASE)/HostInclude
+
+###########################################################
+##### Library Directories                             #####
+###########################################################
+LIBFLAGS=-L$(SDROGUEROOT)/lib -L$(SDORAROOT)/lib -L/usr/lib -L$(SDBCROOT)/lib -L$(SDWVROOT)/lib -L$(SDWFROOT)/lib -L$(TWIQROOT)/lib -L$(SDTWROOT)/lib -L$(SDSDROOT)/lib -L$(SDSVROOT)/lib -L$(SDAIROOT)/lib -L$(SDIQROOT)/lib -L$(SDWVROOT)/lib -L$(SDTIROOT)/lib -L$(SDASROOT)/lib -L$(SDADROOT)/lib -L$(SDTWWVROOT)/lib -L$(SDTPROOT)/lib -L$(SDTUXROOT)/lib -L$(SDROOT)/lib
+
+###########################################################
+##### Compile Options                                 #####
+###########################################################
+DEBUG=-g
+##SOURCEDEBUG=-D_DEBUG #SOURCEDEBUG=-D_DEBUG -D TIMEHEAD
+SOURCEDEBUG=
+
+#HP OS
+WARNINGS=+W829,684,400,229,749,690,336,361
+#CPPFLAGS= $(WARNINGS) $(DAFLAG) $(INCFLAGS) $(LIBFLAGS) $(DEBUG) $(SOURCEDEBUG) -z
+
+CPPFLAGS= $(WARNINGS) $(DAFLAG) $(INCFLAGS) $(LIBFLAGS) $(DEBUG) $(SOURCEDEBUG) 
+CFLAGS=-Aa -w $(INCFLAGS) $(LIBFLAGS) $(DEBUG) +T
+COMPILEFLAGS=-c +Z
+BLDSRVRFLAGS=-Wl,-Bimmediate,+s,+vshlibunsats
+LINKFLAGS=+Z -b
+TESTFLAGS=-Wl,-Bimmediate,+s,+vshlibunsats
+
+#Sun Solaris OS
+#CPPFLAGS= $(INCFLAGS) $(LIBFLAGS) $(DEBUG) $(SOURCEDEBUG)
+#CFLAGS=-Aa -w $(INCFLAGS) $(LIBFLAGS) $(DEBUG) +T
+#COMPILEFLAGS=-compat -c -DSOLARIS
+#BLDSRVRFLAGS=-mt 
+#LINKFLAGS=-compat -G -mt
+#TESTFLAGS=-mt
+
+
+
+
+###########################################################
+##### WV Libraries                                    #####
+###########################################################
+#WVLIBS=$(SDWVROOT)/lib/libbcSauxtran.a $(SDWVROOT)/lib/wvCommon.a $(SDWVROOT)/lib/libencrypt.a $(SDWVROOT)/lib/pfddesp.lib
+WVLIBS=$(SDWVROOT)/lib/wvCommon.a $(SDBCROOT)/lib/aiscryptplacebo.o
+
+###########################################################
+##### BC Host Libraries                               #####
+###########################################################
+BCHOSTLIBS=  -lbcAce2
+#BCHOSTDEBUGLIBS= -lbcAce2
+BCBPHOSTLIBS=  -lbcBpGateway
+
+###########################################################
+##### Standard Libraries                              #####
+###########################################################
+#STDLIBS=-lV3 -lm -ldld -lc -lC
+STDLIBS=
+
+###########################################################
+##### Rogue Libraries                                 #####
+###########################################################
+ROGUELIBS= -ldbt12d -ltls12d -lstd12d -lmny12d
+##ROGUELIBS= -ldbt8d -ltls8d -lstd8d -lmny8d
+
+###########################################################
+#####  Oracle 7.3.2.3 Libraries                       #####
+###########################################################
+#ORALIBS= -lclient -lsql -lsqlnet -lncr -lsqlnet -lcommon -lgeneric \
+#              -lepc -lnlsrtl3 -lc3v6 -lcore3 -lnlsrtl3 -lcore3 -lnlsrtl3 \
+#              -lc -lm
+
+###########################################################
+#####  Oracle 7.3.2.4 Libraries                       #####
+###########################################################
+#ORALIBS= -l:libclntsh.sl -l:libcma.sl -lcl -lm -l:libcl.a
+
+###########################################################
+#####  Oracle 7.3.4 Libraries                         #####
+###########################################################
+ORALIBS=
+
+###########################################################
+#####  Rogue Objects                                  #####
+###########################################################
+ROGUEOBJS=
+
+########################################################### 
+#####  Oracle 7.3.2.3 Objects                         #####
+###########################################################
+
+###########################################################
+#####  Oracle 7.3.4 Objects                           #####
+###########################################################
+#ORAOBJS=$(SDORAROOT)/lib/ntcontab.o
+
+###########################################################
+#####  WV Objects                                     #####
+###########################################################
+WVOBJS=$(SDWVROOT)/lib/servermain.o
+
+###########################################################
+#####  BC Objects                                     #####
+###########################################################
+BCOBJS=$(SDBCROOT)/lib/bcServerMain.o
+
+OTHERLIBS=$(ROGUELIBS) $(STDLIBS) $(ORALIBS)
+LINKOBJS= $(ROGUEOBJS) $(ORAOBJS)
+
+depend:
+	@cat /dev/null >MakeDependencies
+	@for x in $(SOURCES) ;\
+	do \
+		aCC -E $(INCFLAGS) $$x | \
+		grep ^# | awk '!($$3 == "") { print "'$$x'.o:", $$3 }' | \
+		sort | uniq | egrep -v '\"/usr|\"/apps|\"/opt|NOPADDING|POP| 1' | \
+		sed 's/\"//g' | sed 's/.cpp.o/.o/' >>MakeDependencies; \
+	done
+
+crtest	: *.h ../include/*.h *.cpp
+	@echo "Running crtest"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+	
+crtest1	: *.h *.cpp
+	@echo "Running crtest1"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+	
+crtest1A : *.cpp
+	@echo "Running crtest1A"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+	
+crtest1B : *.h
+	@echo "Running crtest1B"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+
+crtest1C	: bc*.h 
+	@echo "Running crtest1C"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+	
+crtest1D : wv*.h 
+	@echo "Running crtest1D"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+	
+crtest2	: ../include/*.h
+	@echo "Running crtest2"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+
+crtest3	: $(SDSOURCEROOT)/bc/include/bcI[A-M]*.h $(SDSOURCEROOT)/bc/include/bc[!I]*.h
+	@echo "Running crtest3"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+
+crtest4	: ../include/bcI[N-Z]*.h ../include/[!bc]*.h
+	@echo "Running crtest4"
+	@$(SDUTILDIR)/crtest $?
+	@echo "Last time files where checked for carriage returns:\c" > $@
+	@date >> $@
+	

@@ -1,0 +1,5 @@
+#include "bcObjBase.h"
+#include "bcInitGuid.h"
+#include "adLoginInformationGuid.h"
+#include "bcCommonGuid.h"
+#include "bcMwServicesGuid.h"
