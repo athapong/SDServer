@@ -1,0 +1,10 @@
+POST /CoreGL/SD_Acct_Sum HTTP/1.1
+POST http://10.200.115.196:9101/CoreGL/SD_Acct_Sum HTTP/1.1
+Accept-Encoding: gzip,deflat
+Content-Type: application/xml
+Content-Length: 624
+Host: 10.200.115.196:9101
+Connection: Keep-Alive
+User-Agent: IE 5.0;Mozilla;40-bit
+
+<ns:TMB_WS_PKG_MSG_Input xmlns:ns="http://xmlns.oracle.com/apps/gl/rest/TMB_WS_PKG/tmb_sd_acct_sum/" xmlns:ns1="http://xmlns.oracle.com/apps/gl/rest/TMB_WS_PKG/header"><ns1:RESTHeader/><ns:InputParameters><ns:IN_DATA><TMBInput><Header><TELLER_ID>0711</TELLER_ID><AUTHORIZE_ID>0711</AUTHORIZE_ID><WORKSTATION_ID>1</WORKSTATION_ID><DATE>30052017</DATE></Header><Details><TRANSACTION_CODE>7130</TRANSACTION_CODE><HOBR_BALANCING>0002</HOBR_BALANCING><ORIGINATE_OFFICE_CODE>0000</ORIGINATE_OFFICE_CODE><ACCOUNT_SUMMARY_TYPE>0</ACCOUNT_SUMMARY_TYPE></Details></TMBInput></ns:IN_DATA></ns:InputParameters></ns:TMB_WS_PKG_MSG_Input>

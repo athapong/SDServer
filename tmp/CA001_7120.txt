@@ -1,0 +1,11 @@
+POST /CoreGL/SD_Acct_Sum HTTP/1.1
+POST http://10.200.115.196:9101/CoreGL/SD_Acct_Sum HTTP/1.1
+Accept-Encoding: gzip,deflat
+Content-Type: application/xml
+Content-Length: 791
+Host: 10.200.115.196:9101
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
+
+<ns:TMB_WS_PKG_MSG_Input xmlns:ns="http://xmlns.oracle.com/apps/gl/rest/TMB_WS_PKG/tmb_sd_out_inquiry/" xmlns:ns1="http://xmlns.oracle.com/apps/gl/rest/TMB_WS_PKG/header"><ns1:RESTHeader/><ns:InputParameters><ns:IN_DATA><TMBInput><Header><TELLER_ID>0711</TELLER_ID><AUTHORIZE_ID>0711</AUTHORIZE_ID><WORKSTATION_ID>1</WORKSTATION_ID><DATE>31052017</DATE></Header><Details><TRANSACTION_CODE>7120</TRANSACTION_CODE><HOBR_BALANCING>0002</HOBR_BALANCING><HOBR_INTER_TRAN>0000</HOBR_INTER_TRAN><GL_ACCOUNT_CODE>19991001</GL_ACCOUNT_CODE><ORIGINATE_OFFICE_CODE>0000</ORIGINATE_OFFICE_CODE><DESTINATION_OFFICE_CODE>0000</DESTINATION_OFFICE_CODE><REFERENCE_NUMBER></REFERENCE_NUMBER><LAST_RECORD_REF>0</LAST_RECORD_REF></Details></TMBInput></ns:IN_DATA></ns:InputParameters></ns:TMB_WS_PKG_MSG_Input>
+

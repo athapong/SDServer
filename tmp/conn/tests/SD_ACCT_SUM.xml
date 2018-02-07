@@ -1,0 +1,21 @@
+<ns:TMB_WS_PKG_MSG_Input xmlns:ns="http://xmlns.oracle.com/apps/gl/rest/TMB_WS_PKG/tmb_sd_acct_sum/" xmlns:ns1="http://xmlns.oracle.com/apps/gl/rest/TMB_WS_PKG/header">
+<ns1:RESTHeader/>
+<ns:InputParameters>
+<ns:IN_DATA>
+<TMBInput>
+<Header>
+<TELLER_ID>1</TELLER_ID>
+<AUTHORIZE_ID>1</AUTHORIZE_ID>
+<WORKSTATION_ID>1</WORKSTATION_ID>
+<DATE>11052016</DATE>
+</Header>
+<Details>
+<TRANSACTION_CODE>7130</TRANSACTION_CODE>
+<HOBR_BALANCING>H001</HOBR_BALANCING>
+<OFFICE_CODE>0000</OFFICE_CODE>
+<ACCOUNT_SUMMARY_TYPE>0</ACCOUNT_SUMMARY_TYPE>
+</Details>
+</TMBInput>
+</ns:IN_DATA>
+</ns:InputParameters>
+</ns:TMB_WS_PKG_MSG_Input>
