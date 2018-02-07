@@ -1,0 +1,19 @@
+#ifndef __iqSecureFundingGuid_H__
+#define __iqSecureFundingGuid_H__
+ 
+#include "iqISecureFundingAccount.h"
+// {CFE1BBA2-8292-4081-907B-0743BE49D37A}
+DEFINE_GUID(CLSID_AiqPSecureFundingAccount, 0xCFE1BBA2, 0x8292, 0x4081, 0x90, 0x7B, 0x07, 0x43, 0xBE, 0x49, 0xD3, 0x7A);
+// {70E6FE25-5D27-4F15-A377-B14DCEC02886}
+DEFINE_GUID(CLSID_AiqPSecureFundingAccounts, 0x70E6FE25, 0x5D27, 0x4F15, 0xA3, 0x77, 0xB1, 0x4D, 0xCE, 0xC0, 0x28, 0x86);
+
+#include "iqISecureFundingInquiry.h"
+// {1E8A8C51-08D4-4AB2-9D23-A40A09CFB925}
+DEFINE_GUID(CLSID_AiqPSecureFundingInquiry, 0x1E8A8C51, 0x08D4, 0x4AB2, 0x9D, 0x23, 0xA4, 0x0A, 0x09, 0xCF, 0xB9, 0x25);
+
+#include "iqIDSecureFundingInquiry.h"
+// {48D75BCA-79AB-11D2-A25A-0000F64DA776}
+DEFINE_GUID(CLSID_AiqDSecureFundingInquiry, 0x48D75BCA, 0x79AB, 0x11D2, 0xA2, 0x5A, 0x00, 0x00, 0xF6, 0x4D, 0xA7, 0x76);
+
+#endif // __iqSecureFundingGuid_H__
+
